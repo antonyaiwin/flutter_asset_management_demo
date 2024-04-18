@@ -20,6 +20,7 @@ class AddAssetScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: context.read<AddDataController>().titleController,
                   decoration: const InputDecoration(labelText: 'Title'),
@@ -84,7 +85,13 @@ class AddAssetScreen extends StatelessWidget {
                 Consumer<AddDataController>(
                   builder: (context, value, child) {
                     return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 10),
+                        Text(
+                          'Availability Status',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                         RadioListTile(
                           value: true,
                           groupValue:
@@ -140,7 +147,8 @@ class AddAssetScreen extends StatelessWidget {
                       Navigator.pop(context);
                     }
                   },
-                  child: Container(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Ink(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.red,
@@ -151,7 +159,7 @@ class AddAssetScreen extends StatelessWidget {
                         context.read<AddDataController>().asset == null
                             ? 'Add Asset'
                             : 'Save Asset',
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
